@@ -6,11 +6,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 
 class FormState {
-    var startingPage by mutableStateOf("")
+    var startingPage by mutableStateOf("1")
     val startingPageOnChange:(String)->Unit={
         startingPage = it
     }
-    var endPage by mutableStateOf("")
+    var endPage by mutableStateOf("1")
     val endPageOnChange:(String)->Unit={
         endPage = it
     }
