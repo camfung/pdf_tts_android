@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -46,29 +45,7 @@ fun MainContent() {
     val setUri: (Uri) -> Unit = { uri ->
         uriState.value = uri
     }
-    val requestUrl = stringResource(id = R.string.upload_url)
-    val uploadFile: (CoroutineScope) -> Unit = { scope ->
-        scope.launch {
-            uploadFile(
-                UploadFileParams(
-                    startingPage = formState.startingPage,
-                    endingPage = formState.endPage,
-                    requestUrl = requestUrl,
-                    filename = formState.fileName,
-                    uri = uriState.value!!,
-                    fileType = "application/pdf",
-                    context = context
-                )
-            )
-        }
-    }
-    val pickPdfResult =
-        rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri: Uri? ->
-            uri?.let {
-                Log.d("URI", uri.toString())
-//                val inputStream = context.assets.open(uri.)
-            }
-        }
+
     Column(horizontalAlignment = Alignment.End, modifier = Modifier.padding(20.dp)) {
         Row(horizontalArrangement = Arrangement.SpaceAround, modifier = Modifier.fillMaxWidth()) {
             Text(
@@ -78,7 +55,6 @@ fun MainContent() {
         }
 
         Row(
-//            horizontalArrangement = Arrangement.SpaceBetween,
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
@@ -89,11 +65,6 @@ fun MainContent() {
                 label = "Select pdf",
                 setUri = setUri
             )
-            // Choose Folder Button
-//            Button(onClick = { /* TODO: Implement folder selection */ }) {
-//                Icon(Icons.Filled.Menu, contentDescription = "Select Save Location")
-//                Text("Select Save Location")
-//            }
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -138,7 +109,9 @@ fun MainContent() {
         Spacer(modifier = Modifier.height(8.dp))
 
         // Play Sample Button
-        Button( modifier=Modifier.width(150.dp), onClick = { /* TODO: Implement play sample functionality */ }) {
+        Button(
+            modifier = Modifier.width(150.dp),
+            onClick = { /* TODO: Implement play sample functionality */ }) {
             Text("Play Sample")
         }
 
@@ -147,7 +120,9 @@ fun MainContent() {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Button( modifier=Modifier.width(150.dp), onClick = { /* TODO: Implement play sample functionality */ }) {
+            Button(
+                modifier = Modifier.width(150.dp),
+                onClick = { /* TODO: Implement play sample functionality */ }) {
                 Text("Estimate Price")
             }
             // Play Sample Button

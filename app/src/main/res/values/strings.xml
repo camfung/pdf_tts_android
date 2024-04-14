@@ -1,4 +1,5 @@
 <resources>
+    <string name="getaudio">"https://pdftts.azurewebsites.net/api/getaudio"</string>
     <string name="upload_url">"https://pdftts.azurewebsites.net/api/test?"</string>
     <string name="app_name">pdf_tts_android</string>
 </resources>

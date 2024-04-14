@@ -14,7 +14,7 @@ class FormState {
     val endPageOnChange:(String)->Unit={
         endPage = it
     }
-    var fileName by mutableStateOf("")
+    var fileName by mutableStateOf("example")
     val fileNameOnChanged:(String)->Unit = {
         fileName = it
     }
