@@ -30,10 +30,17 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.sql.Date
 
+/*
+Hi Charles,
+This code is very gross. I struggled very hard just to get it working.
+Hopefully in the future I can make it less awful but for now the mvp was achieved.
+when testing it use the test pdf i supplied in the project as the api costs money so if you use a
+really big one I may be charged a lot haha. The pdf is formatted so that you can see that the
+different pages are respected
+ */
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun MainContent() {
-    val context = LocalContext.current
     val formState = remember {
         FormState()
     }
@@ -120,12 +127,13 @@ fun MainContent() {
             verticalAlignment = Alignment.Top,
             modifier = Modifier.fillMaxWidth()
         ) {
+
             Button(
                 modifier = Modifier.width(150.dp),
                 onClick = { /* TODO: Implement play sample functionality */ }) {
                 Text("Estimate Price")
             }
-            // Play Sample Button
+
             UploadButton(uriState = uriState, formState = formState)
         }
         Spacer(modifier = Modifier.height(8.dp))
